@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charfile="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>HouseCloud</title>
+</head>
+<body>
+    <div class="container">
+        <!--modals-->
+        <div id=new-file-modal>
+            <div id="new-file-modal-close">
+                <button id="new-file-modal-close-x">
+                    <strong>X</strong>
+                </button>
+            </div>
+            <p id="new-file-modal-title">Nuevo archivo</p>
+            <form id="new-file-modal-form">
+                <div id="new-file-modal-form-container">
+                    {% csrf_token %}
+                    <input type="file" name="my_file" id="my-file">
+                    <div class="centered-input-div">
+                        <button id=send-new-file>Agregar</button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+        <header>
+            <div id="title-div">
+                <h1 id="title-h1">HouseCloud</h1>
+                <p id="title-p">Guarda tus datos, localmente</p>
+            </div>
+        </header>
+        <main>
+            <section id="files">
+                <div id="new-file-div">
+                    <button id="new-file-button">
+                        Agregar archivos
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/index.js' %}"></script>
+<script type="text/javascript">
+
+</script>
+</html>
