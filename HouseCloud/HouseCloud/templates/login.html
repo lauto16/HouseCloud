@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login_register.css' %}">
+    <title>HouseCloud</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1 id="h1-logo">
+                    House<strong id="strong-logo">Cloud</strong>
+                </h1>
+            </div>
+        </header>
+        <main>
+            <section class="description">
+                <h1 id="title-description">¿Que es HouseCloud?</h1>
+                <div id="content-description">
+                    <strong>¡Bienvenido a HouseCloud!</strong> HouseCloud es la solución ideal para <strong>gestionar</strong> y <strong>almacenar</strong> tus archivos en un entorno seguro y controlado. Perfecto tanto para ambientes familiares como empresariales, nuestra plataforma te permite subir archivos y crear carpetas en un servidor local, asegurando que tu información siempre esté <strong>accesible</strong> y <strong>protegida</strong> dentro de tu red.
+                </div>
+            </section>
+            <section class="register-login">
+                <div class="container-text-form">
+                    <h3 id="title-register-login"><strong>Inicio de sesion</strong></h3>
+                    <p id="p-sign">¿No tienes una cuenta? <a id="a-sign" href="/register">Crea una</a></p>
+                </div>
+                <form class="form-centered" method="post">
+
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <div class="send-button">
+                        <input class="button" type="submit" value="Enviar">
+                    </div>
+
+                    <div>
+                        {% if error %}
+                        <p id="error">{{ error }}</p>
+                        {% endif %}
+                    </div>
+
+                </form>
+
+            </section>
+            <footer>
+
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>
