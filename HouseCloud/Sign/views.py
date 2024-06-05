@@ -58,7 +58,7 @@ def register_view(request):
             if response_create_user_data is False:
                 return render(request, "register.html", {"form": form, "error": error, 'error_bd': respuesta, "datos_error": reason})
 
-            # return redirect('login_view')
+            return redirect('login_view')
 
     else:
         form = Register()

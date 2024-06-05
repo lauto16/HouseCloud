@@ -36,6 +36,14 @@
             </div>
         </header>
         <main>
+            <body>
+                <button id="menu-toggle">☰ Menu</button>
+                <div id="sidebar">
+                    <form id="form-logout" method="post">
+                        {% csrf_token %}
+                        <button id="logout-button">Cerrar sesi&oacute;n</button>
+                    </form>
+                </div>
             <section id="files">
                 <div id="new-file-div">
                     <button id="new-file-button">
@@ -49,7 +57,5 @@
 </body>
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/index.js' %}"></script>
-<script type="text/javascript">
-
-</script>
+<script type="text/javascript"></script>
 </html>
