@@ -19,8 +19,8 @@
             <p id="new-file-modal-title">Nuevo archivo</p>
             <form id="new-file-modal-form">
                 <div id="new-file-modal-form-container">
+                    {{ form.as_p }}
                     {% csrf_token %}
-                    <input type="file" name="my_file" id="my-file">
                     <div class="centered-input-div">
                         <button id=send-new-file>Agregar</button>
                     </div>
@@ -46,9 +46,9 @@
                 </div>
             <section id="files">
                 <div id="new-file-div">
-                    <button id="new-file-button">
-                        Agregar archivos
-                    </button>
+                        <button id="new-file-button">
+                            Agregar archivos
+                        </button>
                 </div>
             </section>
         </main>

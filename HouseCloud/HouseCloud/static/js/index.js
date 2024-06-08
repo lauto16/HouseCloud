@@ -106,6 +106,7 @@ function logout(){
 
 // open modal
 new_file_button.addEventListener('click', function(e) {
+	e.preventDefault()
 	openModal(new_file_modal)
 })
 
