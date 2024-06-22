@@ -7,6 +7,9 @@ const form_logout = document.getElementById('form-logout')
 const new_file_close_button = document.getElementById('new-file-modal-close-x')
 const new_file_modal = document.getElementById('new-file-modal')
 const new_file_modal_form = document.getElementById('new-file-modal-form')
+const file_selector = document.getElementById('id_file')
+const fileNameElement = document.getElementById('file-name')
+const send_new_file_button = document.getElementById('send-new-file')
 
 
 function getCookie(name) {
@@ -24,6 +27,14 @@ function getCookie(name) {
 		}
 	}
 	return cookieValue;
+}
+
+
+function restart_form(){
+	fileNameElement.innerHTML = ''
+	fileNameElement.style.display = 'none'
+	send_new_file_button.style.display = 'none'
+	new_file_modal_form.reset()
 }
 
 
@@ -49,7 +60,7 @@ function sendFormfile(form) {
 		})
 
 		.then(file => {
-			console.log(file)
+			restart_form()
 		})
 
 		.catch(error => {
@@ -146,4 +157,9 @@ document.addEventListener('click', function(event) {
 });
 
 
-
+file_selector.addEventListener('change', function() {
+	var fileName = this.files[0].name;;
+	fileNameElement.innerHTML = 'Archivo seleccionado: <strong id="file-name-strong">' + fileName + '</strong>';
+	fileNameElement.style.display = 'block';
+	send_new_file_button.style.display = 'block'
+});

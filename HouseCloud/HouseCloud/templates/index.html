@@ -19,12 +19,15 @@
             <p id="new-file-modal-title">Nuevo archivo</p>
             <form id="new-file-modal-form">
                 <div id="new-file-modal-form-container">
-                    {{ form.as_p }}
                     {% csrf_token %}
+                    {{ form.as_p }}
                     <div class="centered-input-div">
+                        <label for="id_file" class="custom-file-upload">
+                            Hace clic aca para subir un nuevo archivo
+                        </label>
+                        <p id="file-name"></p>
                         <button id=send-new-file>Agregar</button>
                     </div>
-
                 </div>
 
             </form>
