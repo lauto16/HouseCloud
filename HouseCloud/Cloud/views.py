@@ -4,7 +4,7 @@ from django.contrib.auth import logout
 from django.http import JsonResponse
 from Sign.auth_utils import getUser
 from HouseCloud.forms import UploadFileForm
-from .utils import File
+from .utils import File, Folder
 import json
 import os
 
@@ -21,14 +21,25 @@ def index(request):
         JsonResponse: Always contains a 'success': bool element.
         render: Only when the view is accessed
     """
-
+    user = getUser(request)
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
 
-            path = f'files/{getUser(request).username}'
+            # path = f'files/{getUser(request).username}'
+            # verificar que el path pertenece al usuario
+
+            path = form.cleaned_data['path']
+            father_name = form.cleaned_data['father']
+            root_folder = 'files'
+
+            father = Folder(user=user, name=father_name, father=root_folder)
+            print(request.FILES['file'])
+            new_file = File(
+                file=request.FILES['file'], path=path, father=father, user=user)
+
             os.makedirs(path, exist_ok=True)
-            new_file = File(file=request.FILES['file'], path=path)
+
             save_success = new_file.save()
 
             response_data = {
@@ -46,6 +57,15 @@ def index(request):
                 'success': True
             }
             return JsonResponse(response_data)
+
+        elif action == 'request_files':
+            """
+
+            - crear objeto folder
+            - validar que exista 
+            - obtener nombres de archivos de folder
+
+            """
 
     else:
         form = UploadFileForm()
